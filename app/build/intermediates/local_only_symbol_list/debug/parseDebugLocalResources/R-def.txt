@@ -1,0 +1,27 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color gray_custom
+color white
+drawable custom_seekbar2
+drawable custom_thumb2
+drawable fundo_cantos_arredondados
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable progress3
+drawable thumb
+id customSeekBar
+id main
+id progressText
+id progressText2
+id seekBar
+id seekBarCustom2
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.SeekBarCustom
+style CustomSeekBar
+style Theme.SeekBarCustom
+xml backup_rules
+xml data_extraction_rules

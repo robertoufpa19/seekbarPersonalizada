@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="gray_custom">#B8B1B1</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">SeekBarCustom</string>
+    <style name="Base.Theme.SeekBarCustom" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="CustomSeekBar" parent="Widget.AppCompat.SeekBar">
+        <item name="android:progressDrawable">@drawable/progress3</item>
+        <item name="android:thumb">@drawable/thumb</item>
+        <item name="android:thumbOffset">10dp</item>
+
+    </style>
+    <style name="Theme.SeekBarCustom" parent="Base.Theme.SeekBarCustom"/>
+</resources>
