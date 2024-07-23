@@ -50,7 +50,7 @@ public class CustomSeekBar extends AppCompatSeekBar {
 
         // Configuração da pintura da trilha preenchida
         trilhaPreenchidaPaint = new Paint();
-        trilhaPreenchidaPaint.setColor(0xFF00BFFF); // Cor azul claro para a trilha preenchida
+        trilhaPreenchidaPaint.setColor(0xFF0072BB); // Cor azul claro para a trilha preenchida
         trilhaPreenchidaPaint.setStrokeWidth(30); // Largura da trilha
         trilhaPreenchidaPaint.setAntiAlias(true); // Suaviza os cantos
 
@@ -67,6 +67,7 @@ public class CustomSeekBar extends AppCompatSeekBar {
         // Adicionar padding para evitar que a bolinha seja cortada
         setPadding(padding, 0, padding, 0);
     }
+
     @Override
     protected void onDraw(Canvas canvas) {
         int width = getWidth() - getPaddingLeft() - getPaddingRight();
@@ -97,9 +98,18 @@ public class CustomSeekBar extends AppCompatSeekBar {
 
             RectF segmentRect = new RectF(startX, trackTop, endX, trackBottom);
 
-            if (startX < filledWidth) {
-                // Segmento está preenchido
+            if (endX <= filledWidth) {
+                // Segmento está completamente preenchido
                 canvas.drawRoundRect(segmentRect, segmentHeight, segmentHeight, trilhaPreenchidaPaint);
+            } else if (startX < filledWidth) {
+                // Segmento está parcialmente preenchido
+                float partialEndX = filledWidth;
+                RectF partialSegmentRect = new RectF(startX, trackTop, partialEndX, trackBottom);
+                canvas.drawRoundRect(partialSegmentRect, segmentHeight, segmentHeight, trilhaPreenchidaPaint);
+
+                // Desenhar a parte não preenchida do segmento
+                RectF remainingSegmentRect = new RectF(partialEndX, trackTop, endX, trackBottom);
+                canvas.drawRoundRect(remainingSegmentRect, segmentHeight, segmentHeight, gomosPaint);
             } else {
                 // Segmento não está preenchido
                 canvas.drawRoundRect(segmentRect, segmentHeight, segmentHeight, gomosPaint);
@@ -112,8 +122,8 @@ public class CustomSeekBar extends AppCompatSeekBar {
         // Desenhar a bolinha azul menor dentro da bolinha branca (thumb)
         canvas.drawCircle(filledWidth, trackY, innerThumbRadius, bolaAzulPaint);
     }
-
 }
+
 
 
 
